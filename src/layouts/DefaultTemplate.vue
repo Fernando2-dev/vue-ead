@@ -1,24 +1,33 @@
 <template>
     <div>
-     <header-component/>
+        <header-component />
 
-     <section>
-        <router-view></router-view>
-     </section>
+        <section>
+            <router-view></router-view>
+        </section>
 
-     <footer-component/>
+        <footer-component />
     </div>
 </template>
 
 <script>
+import { onBeforeMount } from "vue";
 import HeaderComponent from "./components/HeaderComponent"
 import FooterComponent from "./components/FooterComponent"
 
- export default {
-    name : "DefaultTemplate",
+export default {
+    name: "DefaultTemplate",
+    setup() {
+        onBeforeMount(() => {
+            document.body.classList.add('page')
+            document.body.classList.add('dark')
+
+            document.title = 'Curso Vue com EAD'
+        })
+    },
     components: {
         HeaderComponent,
         FooterComponent
     }
- }
+}
 </script>
